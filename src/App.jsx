@@ -20,6 +20,14 @@ function App() {
   const daysInMonth = new Date(year, month, 0).getDate();
 
   const arr = Array.from({length: daysInMonth}, (_,index)=> `${index+1}`)
+  const timeline = Array.from({length: 24}, (_,index)=> index+1)
+  console.log(timeline);
+
+  const time = timeline.filter((items)=> items>=8 && items<=15)
+  console.log(time);
+
+
+
   
   return (
     <>
@@ -30,7 +38,7 @@ function App() {
         <div className='md:w-[90%] w-full ml-auto h-full text-xs'>
           <div className='shadow-2xl bg-white md:w-[95%] m-5 rounded-2xl'>
           <div className='py-4 border-b-[1px] border-black'>
-            <h1 className='font-semibold text-3xl '>Calender</h1>
+            <h1 className='font-semibold text-3xl  p-2'>Calender</h1>
           </div>
           <div className='md:grid md:grid-cols-4 p-5'>
             <div className='col-span-3 p-3'>
@@ -54,6 +62,27 @@ function App() {
                   </div>
                     <Button><Add/>Schedule Music</Button>
                 </div>
+              </div>
+              <div className='my-5'>
+                {time.map((item,index)=> {
+                  return(
+                  <div key={index} className='grid grid-cols-9 border-black  border-b-[1px] w-full ' >
+                  <div className='border-r-[1px] border-black   w-14  col-span-1 h-20'>
+                    <p>{item}:00</p>
+                  </div>
+                    <div className='border-black  border-r-[1px]  col-span-2 h-20'>
+                      <div className='border-l-[2px] bg-slate-300 text-black rounded-md p-2'>
+                        <p>Jai Shree Ram</p>
+                        <p>To be Played in 15min</p>
+                      </div>
+                    </div>
+                    <div className='border-black border-r-[1px]  col-span-2 h-20'></div>
+                    <div className='border-black  border-r-[1px]  col-span-2 h-20 '></div>
+                    <div className=' col-span-2 h-20'></div>
+                  </div>
+                  )
+                })}
+                
               </div>
             </div>
 
