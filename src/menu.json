@@ -1,0 +1,6 @@
+{
+    "Library": ["Sync", "Upload"],
+    "Collection": ["Tracks", "Playlists", "Artists", "Album", "Genres", "Decades", "Geos"],
+    "Studios": ["Inspiration", "Mood Recolations"]
+}
+  
