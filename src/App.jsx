@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { CalendarMonth, Add, ChevronLeft, ChevronRight,ArrowDropDown, Delete, Share, FastRewind } from '@mui/icons-material'
 
@@ -8,6 +8,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import SideBar from './components/SideBar'
 import Button from './components/common/Button'
+import axios from 'axios'
 
 function App() {
   const months = ['January', 'February', 'March', 'April', 'May','June', 'July', 'August', 'September','October','November', 'December'] 
@@ -16,18 +17,35 @@ function App() {
   const todayDate = date.toLocaleDateString('en-US', options);
   const year = date.getFullYear()
   const [month, setMonth] = useState(1);
-
   const daysInMonth = new Date(year, month, 0).getDate();
-
   const arr = Array.from({length: daysInMonth}, (_,index)=> `${index+1}`)
   const timeline = Array.from({length: 24}, (_,index)=> index+1)
-  console.log(timeline);
-
   const time = timeline.filter((items)=> items>=8 && items<=15)
-  console.log(time);
+  
+  const [data, setData] = useState();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+
+  console.log("data",data);
+  console.log("error",error);
 
 
-
+  useEffect(()=>{
+      ;(
+        async()=>{
+          try {
+            setLoading(true)
+            const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+            setData(response)
+          } catch (error) {
+            setError(error.message)
+            setLoading(false)
+          }finally{
+            setLoading(false)
+          }
+        }
+      )()
+  },[])
   
   return (
     <>

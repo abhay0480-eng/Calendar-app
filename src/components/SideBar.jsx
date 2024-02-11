@@ -56,7 +56,7 @@ const SideBar = () => {
           <p onClick={()=>setOpenMobileMenu(false)}><Close/></p>
         </div>
         <p className='flex items-center'>
-          <Home /> Home
+          <Home />
         </p>
         {Object.entries(MenuData).map((item, index) => {
           const menuKey = item[0];
@@ -75,7 +75,7 @@ const SideBar = () => {
               </p>
               <div
                 key={index}
-                className={`${!openSubmenus[menuKey] ? 'h-0' : 'h-[170px]'} duration-200 overflow-hidden`}
+                className={`${!openSubmenus[menuKey] ? 'max-h-0' : 'max-h-[170px]'} duration-200 overflow-hidden`}
               >
                 {list.map((item, index) => {
                   return <p key={index}>{item}</p>;
