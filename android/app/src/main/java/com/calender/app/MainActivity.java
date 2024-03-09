@@ -1,0 +1,5 @@
+package com.calender.app;
+
+import com.getcapacitor.BridgeActivity;
+
+public class MainActivity extends BridgeActivity {}
